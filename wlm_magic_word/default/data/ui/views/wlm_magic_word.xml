@@ -1,0 +1,73 @@
+<form version="1.1" script="wlm_magic_word.js" stylesheet="wlm_magic_word.css,wlm_compat_v0203.css">
+  <label>WLM Magic Word</label>
+  <description>A safe simulation of admission-control decisions. This dashboard does not dispatch the example searches.</description>
+  <fieldset submitButton="true" autoRun="false">
+    <input type="dropdown" token="scenario" id="scenario_input">
+      <label>Preview a WLM response theme</label>
+      <choice value="default">Default admission denial</choice>
+      <choice value="wildcard">Wildcard index</choice>
+      <choice value="alltime">All-time range</choice>
+      <choice value="join">Resource-heavy join</choice>
+      <choice value="concurrency">User concurrency limit reached</choice>
+      <choice value="runtime">Estimated runtime exceeds policy</choice>
+      <choice value="realtime">Real-time search</choice>
+      <choice value="allowed">Well-scoped search</choice>
+      <default>wildcard</default>
+      <initialValue>wildcard</initialValue>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <html>
+        <div class="magic-shell" id="magic-shell">
+          <div class="terminal-bar">
+            <span class="terminal-dot red"></span><span class="terminal-dot amber"></span><span class="terminal-dot green"></span>
+            <span class="terminal-title">wlm-admission-control</span>
+          </div>
+          <div class="magic-grid">
+            <div class="dino-stage" aria-hidden="true">
+              <div class="scanline"></div>
+              <div class="dino">
+                <div class="dino-eye"></div>
+                <div class="dino-mouth"></div>
+                <div class="dino-arm arm-one"></div>
+                <div class="dino-arm arm-two"></div>
+              </div>
+              <div class="keyboard">▰ ▰ ▰ ▰ ▰ ▰ ▰</div>
+            </div>
+            <div class="decision-copy">
+              <div class="theme-icon" id="theme-icon" aria-hidden="true">🦖✱</div>
+              <div class="status-pill" id="decision-status">SEARCH DENIED</div>
+              <h1 id="decision-headline">NOT EVERY INDEX!</h1>
+              <p class="magic-word" id="decision-tagline">Objects in index=* may be larger than they appear.</p>
+              <p class="rule-message" id="decision-message">WLM-DENIED:WILDCARD: Specify one or more explicit indexes.</p>
+              <div class="rule-card">
+                <div><span>Simulated rule</span><strong id="rule-name">deny_unbounded_wildcard</strong></div>
+                <div><span>Theme marker</span><strong id="theme-marker">WLM-DENIED:WILDCARD:</strong></div>
+                <div><span>Decision</span><strong id="rule-decision">REJECT</strong></div>
+                <div><span>Why it matters</span><strong id="rule-reason">Protects shared search capacity</strong></div>
+              </div>
+              <button type="button" id="sound-button" class="sound-button">▶ Play the warning</button>
+              <p class="fine-print">Educational simulation only — no search is dispatched and no WLM configuration is changed.</p>
+            </div>
+          </div>
+        </div>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel id="magic_speaker_panel">
+      <title>How to use this in a WLM talk</title>
+      <html>
+        <div class="speaker-notes">
+          <ol>
+            <li>Select a response theme and click <strong>Submit</strong>.</li>
+            <li>Explain that real admission rules evaluate search metadata before workload admission.</li>
+            <li>Use the denial reason to teach users how to reshape expensive searches.</li>
+            <li>Keep this app as the memorable teaching layer; configure and validate real WLM policies separately.</li>
+          </ol>
+        </div>
+      </html>
+    </panel>
+  </row>
+</form>

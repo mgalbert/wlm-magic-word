@@ -1,0 +1,36 @@
+.live-guidance { display: flex; gap: 16px; align-items: center; padding: 14px 16px; color: #d8ffe5; background: #0b1710; border-left: 3px solid #2eff79; font-size: 14px; }
+.preview-button { flex: 0 0 auto; padding: 8px 12px; color: #2eff79; background: transparent; border: 1px solid #2eff79; border-radius: 4px; cursor: pointer; }
+.live-guidance strong + * { margin-left: auto; }
+.run-button { flex: 0 0 auto; padding: 9px 14px; color: #031008; background: #2eff79; border: 1px solid #2eff79; border-radius: 4px; font-weight: bold; cursor: pointer; }
+.run-button:disabled { color: #52705c; background: #183323; border-color: #31543d; cursor: wait; }
+.wlm-overlay { position: fixed; z-index: 99999; inset: 0; display: none; align-items: center; justify-content: center; padding: 24px; background: rgba(0,5,2,.9); backdrop-filter: blur(6px); }
+.wlm-overlay.visible { display: flex; animation: overlay-in .18s ease-out; }
+.wlm-overlay-card { position: relative; width: min(760px, 92vw); padding: 52px 46px 42px; text-align: center; color: #d8ffe5; background: radial-gradient(circle at top, #123623, #020805 66%); border: 2px solid #2eff79; border-radius: 14px; box-shadow: 0 0 60px rgba(46,255,121,.28); font-family: Consolas, Monaco, monospace; }
+.overlay-close { position: absolute; right: 14px; top: 10px; color: #8bc49e; background: none; border: 0; font-size: 32px; cursor: pointer; }
+.live-dino { font-size: 66px; animation: live-type .35s infinite alternate; }
+.live-denied { display: inline-block; margin-top: 20px; padding: 6px 12px; color: #ff6476; border: 1px solid #ff3e55; border-radius: 99px; letter-spacing: .12em; }
+.wlm-overlay-card h1 { margin: 20px 0 4px; color: #ff3e55; font-size: clamp(54px, 9vw, 100px); line-height: .9; text-shadow: 4px 4px 0 #5b101a; }
+.live-magic-word { color: #2eff79; font-size: 23px; }
+.live-server-message { max-width: 650px; margin: 24px auto; padding: 14px; color: #e8fff0; background: rgba(0,0,0,.45); border-left: 3px solid #ff3e55; font: 14px/1.5 system-ui, sans-serif; overflow-wrap: anywhere; }
+.remediation-card { display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: center; max-width: 650px; margin: -10px auto 24px; padding: 12px 14px; text-align: left; background: #0b1710; border: 1px solid #214a30; }
+.remediation-card span { color: #2eff79; font-size: 11px; letter-spacing: .12em; }
+.remediation-card strong { color: #d8ffe5; font: 14px/1.4 system-ui, sans-serif; }
+.theme-wildcard .wlm-overlay-card { box-shadow: 0 0 70px rgba(255,62,85,.3); }
+.theme-alltime .wlm-overlay-card { border-color: #f5bd42; box-shadow: 0 0 70px rgba(245,189,66,.25); }
+.theme-alltime .live-magic-word,.theme-alltime .remediation-card span { color: #f5bd42; }
+.theme-join .wlm-overlay-card { border-color: #ff7b39; box-shadow: 0 0 70px rgba(255,123,57,.28); }
+.theme-concurrency .wlm-overlay-card { border-color: #45b8ff; box-shadow: 0 0 70px rgba(69,184,255,.25); }
+.theme-runtime .wlm-overlay-card { filter: grayscale(.35); }
+.theme-realtime .wlm-overlay-card { animation: realtime-pulse .65s infinite alternate; }
+.admitted-toast { position: fixed; z-index: 99998; right: 26px; bottom: 26px; display: flex; align-items: center; gap: 18px; padding: 14px 18px; color: #d8ffe5; background: #092416; border: 1px solid #2eff79; border-radius: 7px; box-shadow: 0 0 28px rgba(46,255,121,.24); opacity: 0; transform: translateY(18px); pointer-events: none; transition: opacity .2s, transform .2s; font-family: Consolas, Monaco, monospace; }
+.admitted-toast.visible { opacity: 1; transform: translateY(0); }
+.admitted-toast .admitted-title { color: #2eff79; font-weight: bold; }
+.admitted-toast .admitted-copy { color: #d8ffe5; }
+.admitted-toast .admitted-metrics { color: #a8c8b3; white-space: nowrap; }
+@media (max-width: 720px) { .admitted-toast { right: 14px; bottom: 14px; left: 14px; flex-wrap: wrap; gap: 6px 14px; } }
+.wlm-overlay-open { overflow: hidden; }
+@keyframes overlay-in { from { opacity: 0; transform: scale(.98); } to { opacity: 1; transform: scale(1); } }
+@keyframes live-type { from { transform: translateY(-3px) rotate(-2deg); } to { transform: translateY(3px) rotate(2deg); } }
+@keyframes realtime-pulse { from { box-shadow: 0 0 35px rgba(255,62,85,.25); } to { box-shadow: 0 0 85px rgba(255,62,85,.55); } }
+@media (max-width: 700px) { .live-guidance { align-items: flex-start; flex-direction: column; } .preview-button { margin-left: 0; } .wlm-overlay-card { padding: 42px 22px 30px; } }
+@media (prefers-reduced-motion: reduce) { .wlm-overlay.visible,.live-dino,.theme-realtime .wlm-overlay-card { animation: none !important; } }

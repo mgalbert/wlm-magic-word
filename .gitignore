@@ -1,0 +1,14 @@
+# Splunk runtime and local state
+wlm_magic_word/local/
+wlm_magic_word/var/
+wlm_magic_word/metadata/local.meta
+
+# Generated release packages
+*.spl
+
+# Editor and operating-system files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+

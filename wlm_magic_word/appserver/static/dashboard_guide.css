@@ -1,0 +1,43 @@
+.dashboard-body { background: #07110d; }
+.guide-shell { color: #d8ffe5; background: #07110d; font-family: system-ui, sans-serif; }
+.guide-hero { padding: 30px; background: linear-gradient(135deg,#0b1c12,#07110d 60%); border: 1px solid #284a35; border-radius: 8px; }
+.guide-kicker { color: #2eff79; font: 700 12px Consolas,Monaco,monospace; letter-spacing: .14em; }
+.guide-hero h1 { margin: 8px 0; color: #effff4; font-size: 34px; }
+.guide-hero p { max-width: 850px; margin: 0; color: #a8c8b3; font-size: 16px; line-height: 1.55; }
+.guide-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; margin-top: 16px; }
+.guide-card { position: relative; padding: 22px; color: #d8ffe5; background: #0b1710; border: 1px solid #31553b; border-radius: 7px; }
+.guide-card.guide-primary { border-color: #2eff79; box-shadow: 0 0 22px rgba(46,255,121,.08); }
+.guide-number { position: absolute; top: 14px; right: 16px; color: #456b51; font: 700 24px Consolas,Monaco,monospace; }
+.guide-card h2,.guide-flow h2,.guide-detection h2,.guide-setup h2,.guide-recipes h2,.guide-theme-map h2,.guide-checklist h2 { margin: 0 0 4px; color: #effff4; }
+.guide-purpose { margin: 0 0 14px; color: #2eff79; font: 700 12px Consolas,Monaco,monospace; text-transform: uppercase; }
+.guide-card p,.guide-card li,.guide-flow li,.guide-warning p,.guide-detection p { color: #a8c8b3; line-height: 1.5; }
+.guide-card ul { margin: 15px 0 0; padding-left: 18px; }
+.guide-card li { margin-top: 8px; }
+.guide-card strong,.guide-flow strong { color: #d8ffe5; }
+.guide-flow,.guide-warning,.guide-detection,.guide-setup,.guide-recipes,.guide-theme-map,.guide-checklist { margin-top: 16px; padding: 20px 22px; background: #0b1710; border: 1px solid #284a35; border-radius: 7px; }
+.guide-flow ol { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; margin: 14px 0 0; padding: 0; list-style: none; counter-reset: path; }
+.guide-flow li { padding: 12px; background: #07110d; border-left: 2px solid #2eff79; }
+.guide-flow li span { display: block; color: #2eff79; font: 700 11px Consolas,Monaco,monospace; text-transform: uppercase; }
+.guide-warning { border-color: #8b6c27; }
+.guide-warning strong { color: #ffc857; font: 700 12px Consolas,Monaco,monospace; letter-spacing: .08em; text-transform: uppercase; }
+.guide-warning p,.guide-detection p { margin: 7px 0 0; }
+.guide-shell code { padding: 1px 4px; color: #effff4; background: #12261a; border: 0; font-family: Consolas,Monaco,monospace; }
+.guide-section-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 16px; }
+.guide-eyebrow { margin: 0 0 4px; color: #2eff79; font: 700 11px Consolas,Monaco,monospace; letter-spacing: .12em; }
+.guide-badge { padding: 5px 9px; color: #ffc857; background: #201b0d; border: 1px solid #8b6c27; border-radius: 999px; font: 700 10px Consolas,Monaco,monospace; white-space: nowrap; }
+.guide-badge-green { color: #2eff79; background: #0b2113; border-color: #356044; }
+.guide-steps { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 12px; }
+.guide-steps > div { padding: 15px; background: #07110d; border-top: 2px solid #2eff79; }
+.guide-steps > div > span { display: inline-grid; width: 22px; height: 22px; margin-bottom: 9px; place-items: center; color: #07110d; background: #2eff79; border-radius: 50%; font: 700 11px Consolas,Monaco,monospace; }
+.guide-steps > div > strong { display: block; color: #effff4; }
+.guide-steps p,.guide-theme-map p,.recipe-card p { color: #a8c8b3; line-height: 1.5; }
+.recipe-card { display: grid; grid-template-columns: 110px minmax(220px,.8fr) 140px minmax(310px,1.5fr) minmax(220px,1fr); gap: 12px; align-items: start; margin-top: 10px; padding: 15px; background: #07110d; border-left: 3px solid #2eff79; }
+.recipe-card > div span { display: block; margin-bottom: 5px; color: #789685; font: 700 9px Consolas,Monaco,monospace; letter-spacing: .08em; text-transform: uppercase; }
+.recipe-card code { display: block; overflow-wrap: anywhere; }
+.recipe-card p { grid-column: 2 / -1; margin: 0; }
+.recipe-theme { color: #2eff79; font: 800 13px Consolas,Monaco,monospace; letter-spacing: .08em; }
+.theme-message-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; margin-top: 14px; }
+.theme-message-grid code { display: block; padding: 10px 12px; overflow-wrap: anywhere; }
+.guide-checklist ul { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px 24px; margin: 14px 0 0; padding-left: 20px; color: #a8c8b3; line-height: 1.5; }
+@media (max-width: 1150px) { .guide-steps { grid-template-columns: repeat(2,1fr); } .recipe-card { grid-template-columns: 100px 1fr 1fr; } .recipe-card > div:nth-child(4),.recipe-card > div:nth-child(5),.recipe-card p { grid-column: auto; } }
+@media (max-width: 950px) { .guide-grid,.guide-flow ol,.guide-steps,.theme-message-grid,.guide-checklist ul,.recipe-card { grid-template-columns: 1fr; } .recipe-card p { grid-column: auto; } .guide-section-heading { flex-direction: column; } }

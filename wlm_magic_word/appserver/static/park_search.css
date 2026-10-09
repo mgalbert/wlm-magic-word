@@ -1,0 +1,53 @@
+.dashboard-body { background: #07110d; }
+.park-workspace { overflow: hidden; color: #d8ffe5; background: #07110d; border: 1px solid #284a35; border-radius: 8px; font-family: system-ui, sans-serif; }
+.park-toolbar,.park-controls,.park-status,.park-tabs { display: flex; align-items: center; gap: 12px; }
+.park-toolbar { justify-content: space-between; padding: 12px 16px; background: #101a15; border-bottom: 1px solid #284a35; }
+.park-product { color: #2eff79; font: 700 15px Consolas, Monaco, monospace; letter-spacing: .12em; }
+.park-version { margin-left: 8px; color: #789685; font: 11px Consolas, Monaco, monospace; }
+.park-toolbar-actions { display: flex; gap: 8px; }
+.park-label { display: block; padding: 16px 16px 7px; color: #91af9c; font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+.park-editor { box-sizing: border-box; display: block; width: calc(100% - 32px); margin: 0 16px; padding: 14px; resize: vertical; color: #eafff0; background: #020805; border: 1px solid #356044; border-radius: 5px; outline: 0; font: 15px/1.5 Consolas, Monaco, monospace; tab-size: 4; }
+.park-editor:focus { border-color: #2eff79; box-shadow: 0 0 0 2px rgba(46,255,121,.12); }
+.park-controls { flex-wrap: wrap; padding: 12px 16px 16px; }
+.park-controls label { color: #91af9c; font-size: 12px; font-weight: 700; }
+.park-time-range,.park-secondary,.park-stop,.park-history-clear { padding: 8px 11px; color: #d8ffe5; background: #101a15; border: 1px solid #42644e; border-radius: 4px; cursor: pointer; }
+.park-secondary:hover,.park-stop:hover,.park-history-clear:hover { border-color: #2eff79; }
+.park-stop { color: #ff8794; border-color: #8b303b; }
+.park-stop:disabled,.park-secondary:disabled { opacity: .42; cursor: default; }
+.park-status { flex-wrap: wrap; padding: 10px 16px; color: #91af9c; background: #0b1710; border-top: 1px solid #1d3827; border-bottom: 1px solid #1d3827; font: 12px Consolas, Monaco, monospace; }
+.park-status strong { min-width: 72px; color: #2eff79; }
+.park-status b { color: #d8ffe5; font-weight: 400; }
+.park-status.state-running strong { color: #45b8ff; }
+.park-status.state-denied strong,.park-status.state-failed strong { color: #ff6476; }
+.park-inline-warning { display: none; margin: 12px 16px 0; padding: 11px 13px; color: #ffd8dd; background: #2a0b10; border-left: 3px solid #ff3e55; font: 13px/1.4 Consolas, Monaco, monospace; }
+.park-inline-warning.visible { display: block; }
+.park-body { display: grid; grid-template-columns: minmax(0,1fr) 310px; min-height: 360px; }
+.park-results-section { min-width: 0; border-right: 1px solid #1d3827; }
+.park-tabs { padding: 0 16px; background: #0a120e; border-bottom: 1px solid #1d3827; }
+.park-tabs button { padding: 12px 4px 9px; color: #809b89; background: transparent; border: 0; border-bottom: 3px solid transparent; cursor: pointer; }
+.park-tabs button.active { color: #d8ffe5; border-bottom-color: #2eff79; }
+.park-tabs span { display: inline-block; min-width: 16px; margin-left: 4px; padding: 1px 4px; color: #07110d; background: #789685; border-radius: 9px; font-size: 10px; }
+.park-results { overflow: auto; min-height: 310px; max-height: 560px; padding: 14px 16px; }
+.park-empty { color: #6f8c79; font-style: italic; }
+.park-event { margin-bottom: 10px; padding: 10px 12px; color: #d8ffe5; background: #0b1710; border-left: 2px solid #356044; font: 12px/1.45 Consolas, Monaco, monospace; white-space: pre-wrap; overflow-wrap: anywhere; }
+.park-event-time { display: block; margin-bottom: 5px; color: #45b8ff; }
+.park-table { width: 100%; border-collapse: collapse; font: 12px/1.4 Consolas, Monaco, monospace; }
+.park-table th,.park-table td { padding: 8px 10px; text-align: left; vertical-align: top; border-bottom: 1px solid #1d3827; overflow-wrap: anywhere; }
+.park-table th { position: sticky; top: 0; color: #2eff79; background: #101a15; }
+.park-history { padding: 14px; background: #08100c; }
+.park-aside-title { margin-bottom: 12px; color: #b8d8c3; font: 700 11px Consolas, Monaco, monospace; letter-spacing: .1em; }
+.park-history-item { box-sizing: border-box; width: 100%; margin-bottom: 8px; padding: 10px 11px; text-align: left; color: #eafff0; background: #0d1d14; border: 1px solid #31553b; border-left: 3px solid #759985; border-radius: 4px; cursor: pointer; }
+.park-history-item.outcome-admitted { border-left-color: #2eff79; }
+.park-history-item.outcome-denied { border-left-color: #ff6476; }
+.park-history-item.outcome-stopped { border-left-color: #ffc857; }
+.park-history-item:hover { border-color: #2eff79; }
+.park-history .park-history-item code { display: -webkit-box !important; overflow: hidden !important; margin: 0 !important; padding: 0 !important; color: #effff4 !important; background: transparent !important; border: 0 !important; border-radius: 0 !important; box-shadow: none !important; font: 600 12px/1.4 Consolas, Monaco, monospace !important; overflow-wrap: anywhere; white-space: normal !important; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.park-history .park-history-item span { display: block; margin-top: 6px; color: #a8c8b3; font: 10px/1.35 Consolas, Monaco, monospace; }
+.park-history-clear { width: 100%; margin-top: 8px; font-size: 11px; }
+.park-diagnostics { display: grid; grid-template-columns: repeat(4,minmax(130px,1fr)); gap: 1px; padding: 1px; background: #284a35; border-top: 1px solid #284a35; }
+.park-diagnostics div { padding: 9px 11px; background: #06100a; }
+.park-diagnostics span,.park-diagnostics b { display: block; }
+.park-diagnostics span { color: #789685; font-size: 10px; text-transform: uppercase; }
+.park-diagnostics b { margin-top: 3px; color: #d8ffe5; font: 11px Consolas, Monaco, monospace; overflow-wrap: anywhere; }
+@media (max-width: 850px) { .park-body { grid-template-columns: 1fr; } .park-results-section { border-right: 0; } .park-history { border-top: 1px solid #1d3827; } .park-diagnostics { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 620px) { .park-toolbar { align-items: flex-start; flex-direction: column; } .park-toolbar-actions { flex-wrap: wrap; } .park-diagnostics { grid-template-columns: 1fr; } }

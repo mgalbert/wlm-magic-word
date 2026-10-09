@@ -1,0 +1,149 @@
+<dashboard version="1.1" stylesheet="dashboard_guide.css,wlm_compat_v0203.css">
+  <label>README</label>
+  <description>Start here: choose the right WLM Magic Word dashboard and understand its safety boundary.</description>
+  <row>
+    <panel>
+      <html>
+        <div class="guide-shell">
+          <header class="guide-hero">
+            <div class="guide-kicker">WLM MAGIC WORD · v1.0.0</div>
+            <h1>Welcome to the park.</h1>
+            <p>Use the playful interface for demonstrations, the search workspace for normal exploration, and the test harness when validating WLM behavior.</p>
+          </header>
+
+          <section class="guide-grid" aria-label="Dashboard guide">
+            <article class="guide-card guide-primary">
+              <div class="guide-number">01</div>
+              <h2>Park Search</h2>
+              <p class="guide-purpose">Primary search workspace</p>
+              <p>Run SPL with time presets, results, job messages, session history, diagnostics, success toasts, and themed WLM denial overlays.</p>
+              <ul>
+                <li><strong>Use it for:</strong> day-to-day demos and the complete experience.</li>
+                <li><strong>Dispatches searches:</strong> yes, only the SPL you enter.</li>
+                <li><strong>Professional mode:</strong> keeps feedback inline and suppresses theatrical effects.</li>
+              </ul>
+            </article>
+
+            <article class="guide-card">
+              <div class="guide-number">02</div>
+              <h2>WLM Magic Word</h2>
+              <p class="guide-purpose">Theme gallery and simulator</p>
+              <p>Preview every denial theme, remediation message, color treatment, icon, sound, and the admitted state without needing a real WLM rejection.</p>
+              <ul>
+                <li><strong>Use it for:</strong> presentations, theme selection, and safe visual checks.</li>
+                <li><strong>Dispatches searches:</strong> no.</li>
+                <li><strong>Not for:</strong> proving that an admission rule actually fired.</li>
+              </ul>
+            </article>
+
+            <article class="guide-card">
+              <div class="guide-number">03</div>
+              <h2>Live WLM Test</h2>
+              <p class="guide-purpose">Compatibility and regression lab</p>
+              <p>Uses Splunk's native Simple XML search manager and results table to validate real WLM responses, callback behavior, and repeated dispatches.</p>
+              <ul>
+                <li><strong>Use it for:</strong> lab validation after Splunk upgrades or detector changes.</li>
+                <li><strong>Dispatches searches:</strong> yes, only the SPL you enter.</li>
+                <li><strong>Not for:</strong> routine searching or broad production access.</li>
+              </ul>
+            </article>
+          </section>
+
+          <section class="guide-flow">
+            <h2>Recommended path</h2>
+            <ol>
+              <li><span>Preview</span> Pick and review a theme in <strong>WLM Magic Word</strong>.</li>
+              <li><span>Validate</span> Test a scoped admission rule with a dedicated user in <strong>Live WLM Test</strong>.</li>
+              <li><span>Use</span> Demonstrate the complete workflow in <strong>Park Search</strong>.</li>
+            </ol>
+          </section>
+
+          <section class="guide-warning">
+            <strong>Lab guardrail</strong>
+            <p>Use <code>| makeresults</code> for the broad DEFAULT test. To test ALLTIME, use a small index-backed search with the time picker set to <strong>All time</strong>. Use a temporary rule aimed at a dedicated test user, and never generate an expensive search merely to force a rejection.</p>
+          </section>
+
+          <section class="guide-setup">
+            <div class="guide-section-heading">
+              <div>
+                <p class="guide-eyebrow">WLM SETUP LAB</p>
+                <h2>Configure a safe admission-rule demo</h2>
+              </div>
+              <span class="guide-badge">Splunk Enterprise 10.x lab</span>
+            </div>
+            <div class="guide-steps">
+              <div><span>1</span><strong>Create a test identity</strong><p>Use a dedicated user such as <code>wlm_demo</code>. Do not target an administrator, shared account, or production role.</p></div>
+              <div><span>2</span><strong>Open admission rules</strong><p>Go to <strong>Settings → Workload Management → Admission Rules</strong> and choose <strong>Add Admission Rule</strong>.</p></div>
+              <div><span>3</span><strong>Add one scoped recipe</strong><p>Enter the predicate, choose <strong>Filter search</strong>, paste the exact user message, select the intended schedule, and enable the rule.</p></div>
+              <div><span>4</span><strong>Validate and clean up</strong><p>Sign in as the test user, run the harmless test, confirm the matching theme, then disable or delete the temporary rule.</p></div>
+            </div>
+          </section>
+
+          <section class="guide-recipes">
+            <div class="guide-section-heading">
+              <div>
+                <p class="guide-eyebrow">READY-TO-TEST RECIPES</p>
+                <h2>Deterministic admission themes</h2>
+              </div>
+              <span class="guide-badge guide-badge-green">Use one at a time</span>
+            </div>
+
+            <article class="recipe-card">
+              <div class="recipe-theme">WILDCARD</div>
+              <div><span>Predicate</span><code>user=wlm_demo AND index=*</code></div>
+              <div><span>Action</span><strong>Filter search</strong></div>
+              <div><span>User message</span><code>WLM-DENIED:WILDCARD: Specify one or more explicit indexes.</code></div>
+              <div><span>Harmless test</span><code>index=* | head 1</code></div>
+              <p>Expected overlay: <strong>NOT EVERY INDEX!</strong> Replace <code>wlm_demo</code> with the exact dedicated lab username.</p>
+            </article>
+
+            <article class="recipe-card">
+              <div class="recipe-theme">ALLTIME</div>
+              <div><span>Predicate</span><code>user=wlm_demo AND search_time_range=alltime</code></div>
+              <div><span>Action</span><strong>Filter search</strong></div>
+              <div><span>User message</span><code>WLM-DENIED:ALLTIME: Select a bounded time range.</code></div>
+              <div><span>Harmless test</span><code>index=_internal | head 1</code> with the time picker set to <strong>All time</strong></div>
+              <p>Expected overlay: <strong>PREHISTORIC RANGE!</strong> Prefer a small dedicated test index when available. Do not use <code>| makeresults</code> for this recipe: generating searches are not index-backed and may not expose an event time range to the admission predicate.</p>
+            </article>
+
+            <article class="recipe-card">
+              <div class="recipe-theme">DEFAULT</div>
+              <div><span>Predicate</span><code>user=wlm_demo</code></div>
+              <div><span>Action</span><strong>Filter search</strong></div>
+              <div><span>User message</span><code>WLM-DENIED: This test search violates the temporary admission rule.</code></div>
+              <div><span>Harmless test</span><code>| makeresults</code></div>
+              <p>Expected overlay: <strong>AH-AH-AH!</strong> This broad rule blocks searches for the dedicated user, so enable it only during the test.</p>
+            </article>
+          </section>
+
+          <section class="guide-theme-map">
+            <h2>Additional theme messages</h2>
+            <p>These themes are available to rules you already operate, but are not presented as portable one-click admission recipes. Concurrency and runtime commonly depend on workload state or monitoring rules; reliable JOIN and real-time identification can vary by version and local policy.</p>
+            <div class="theme-message-grid">
+              <code>WLM-DENIED:JOIN: Replace join with stats, lookup, or a narrower subsearch.</code>
+              <code>WLM-DENIED:CONCURRENCY: The concurrent-search allowance is full.</code>
+              <code>WLM-DENIED:RUNTIME: Schedule or optimize this long-running search.</code>
+              <code>WLM-DENIED:REALTIME: Evaluate scheduled or indexed real-time detection.</code>
+            </div>
+          </section>
+
+          <section class="guide-checklist">
+            <h2>Before enabling a rule</h2>
+            <ul>
+              <li>Confirm the predicate resolves only to the dedicated test user.</li>
+              <li>Put specific recipes ahead of any broader temporary rule, or enable only one recipe at a time.</li>
+              <li>Copy the marker exactly; the theme name sits between the first and second colon.</li>
+              <li>Test in <strong>Live WLM Test</strong>, then demonstrate in <strong>Park Search</strong>.</li>
+              <li>Disable or remove the temporary rule and verify the same harmless search is admitted.</li>
+            </ul>
+          </section>
+
+          <section class="guide-detection">
+            <h2>How a real denial is recognized</h2>
+            <p>The preferred admission-rule message begins with <code>WLM-DENIED:</code> or a structured theme such as <code>WLM-DENIED:WILDCARD:</code>. The app trusts current-dispatch HTTP failures, SearchManager errors, and job messages. Historical marker text returned as a result value—such as an old event from <code>index=_internal</code>—is treated as data and does not trigger the overlay.</p>
+          </section>
+        </div>
+      </html>
+    </panel>
+  </row>
+</dashboard>

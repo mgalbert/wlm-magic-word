@@ -1,0 +1,334 @@
+/* Splunk 10.4 compatibility layer. The versioned filename intentionally busts
+   Splunk Web and browser static-asset caches during app upgrades. */
+.dashboard-body {
+    background: #07110d !important;
+    color: #d8ffe5 !important;
+}
+
+.dashboard-body .dashboard-header,
+.dashboard-body .dashboard-title,
+.dashboard-body .dashboard-description {
+    box-sizing: border-box;
+}
+
+.dashboard-body .dashboard-header {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+}
+
+.dashboard-body .dashboard-header h1,
+.dashboard-body .dashboard-title,
+.dashboard-body .dashboard-title h1 {
+    color: #effff4 !important;
+}
+
+.dashboard-body .dashboard-header .description,
+.dashboard-body .dashboard-description,
+.dashboard-body .description {
+    color: #b8d8c3 !important;
+}
+
+.dashboard-body .dashboard-row {
+    box-sizing: border-box;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.magic-shell,
+.park-workspace,
+.guide-shell {
+    box-sizing: border-box;
+}
+
+.guide-shell {
+    padding: 12px !important;
+    color: #d8ffe5 !important;
+}
+
+.guide-shell h1,
+.guide-shell h2,
+.guide-shell h3,
+.guide-shell strong {
+    color: #effff4 !important;
+}
+
+.guide-shell p,
+.guide-shell li {
+    color: #b8d8c3 !important;
+}
+
+.guide-shell .guide-purpose,
+.guide-shell .guide-eyebrow,
+.guide-shell .recipe-theme,
+.guide-shell .guide-flow li span {
+    color: #54ff8f !important;
+}
+
+.guide-shell .guide-kicker {
+    color: #54ff8f !important;
+}
+
+.guide-shell .guide-number {
+    color: #6fa982 !important;
+}
+
+.guide-shell .guide-warning strong {
+    color: #ffd56a !important;
+}
+
+.guide-shell code {
+    color: #f4fff7 !important;
+    background: #14301f !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+.guide-section-heading {
+    display: flex !important;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px !important;
+}
+
+.guide-eyebrow {
+    margin: 0 0 5px !important;
+    font: 700 11px Consolas, Monaco, monospace !important;
+    letter-spacing: .12em;
+}
+
+.guide-badge {
+    display: inline-block;
+    padding: 6px 10px !important;
+    color: #ffd56a !important;
+    background: #261f0c !important;
+    border: 1px solid #a98530 !important;
+    border-radius: 999px;
+    font: 700 10px Consolas, Monaco, monospace !important;
+    white-space: nowrap;
+}
+
+.guide-badge-green {
+    color: #54ff8f !important;
+    background: #0d2716 !important;
+    border-color: #3d7650 !important;
+}
+
+.guide-setup,
+.guide-recipes,
+.guide-theme-map,
+.guide-checklist {
+    box-sizing: border-box;
+    margin-top: 18px !important;
+    padding: 24px 26px !important;
+    color: #d8ffe5 !important;
+    background: #0b1710 !important;
+    border: 1px solid #31553b !important;
+    border-radius: 8px;
+}
+
+.guide-steps {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.guide-steps > div {
+    min-width: 0;
+    padding: 17px 18px !important;
+    background: #07110d !important;
+    border-top: 3px solid #2eff79 !important;
+    border-radius: 4px;
+}
+
+.guide-steps > div > span {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    margin-bottom: 10px;
+    color: #031008 !important;
+    background: #54ff8f !important;
+    border-radius: 50%;
+    font: 800 12px Consolas, Monaco, monospace !important;
+}
+
+.guide-steps > div > strong {
+    display: block;
+    margin-bottom: 6px;
+}
+
+.guide-steps p,
+.guide-theme-map p,
+.recipe-card p {
+    margin: 0;
+    color: #b8d8c3 !important;
+    line-height: 1.55;
+}
+
+.recipe-card {
+    display: grid !important;
+    grid-template-columns: 110px minmax(220px, .8fr) 140px minmax(310px, 1.5fr) minmax(220px, 1fr);
+    gap: 14px;
+    align-items: start;
+    box-sizing: border-box;
+    margin-top: 12px !important;
+    padding: 18px 20px !important;
+    background: #07110d !important;
+    border: 1px solid #203c2a !important;
+    border-left: 4px solid #2eff79 !important;
+    border-radius: 5px;
+}
+
+.recipe-card > div span {
+    display: block;
+    margin-bottom: 6px;
+    color: #a2c4ae !important;
+    font: 700 10px Consolas, Monaco, monospace !important;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.recipe-card code {
+    display: block;
+    padding: 6px 8px !important;
+    overflow-wrap: anywhere;
+    line-height: 1.45;
+}
+
+.recipe-card p {
+    grid-column: 2 / -1;
+}
+
+.theme-message-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.theme-message-grid code {
+    display: block;
+    padding: 12px 14px !important;
+    overflow-wrap: anywhere;
+    line-height: 1.45;
+}
+
+.guide-checklist ul {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 28px;
+    margin: 16px 0 0 !important;
+    padding-left: 22px !important;
+    color: #b8d8c3 !important;
+    line-height: 1.55;
+}
+
+.live-guidance {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+}
+
+/* Native Simple XML tables use light surfaces in Splunk 10.2 and 10.4.
+   Keep this scoped to the live harness so app chrome and overlays stay dark. */
+#live_results,
+#live_results .dashboard-element,
+#live_results .panel-body,
+#live_results .splunk-table,
+#live_results .table-chrome {
+    background: #ffffff !important;
+}
+
+#live_results table,
+#live_results th,
+#live_results td,
+#live_results .table-cell,
+#live_results .string,
+#live_results .numeric,
+#live_results .multivalue-subcell,
+#live_results .results-table-cell {
+    color: #17251d !important;
+}
+
+#live_results th,
+#live_results thead td,
+#live_results .sorts {
+    color: #31413a !important;
+    background: #e8ecef !important;
+}
+
+#live_results tbody tr:nth-child(even) td {
+    background: #f5f7f6 !important;
+}
+
+#live_results a,
+#live_results a:visited,
+#live_results .link {
+    color: #086b38 !important;
+}
+
+#live_results .no-results,
+#live_results .empty-results,
+#live_results .result-status,
+#live_results .pagination,
+#live_results .pagination a,
+#live_results .shared-resultstable-resultstableheader,
+#live_results .shared-resultstable-resultstablefooter {
+    color: #3c4c44 !important;
+}
+
+/* The theme simulator uses a native light Simple XML panel for its talk notes. */
+#magic_speaker_panel,
+#magic_speaker_panel .dashboard-panel,
+#magic_speaker_panel .panel-body,
+#magic_speaker_panel .dashboard-element {
+    color: #17251d !important;
+    background: #ffffff !important;
+}
+
+#magic_speaker_panel .panel-title,
+#magic_speaker_panel h2,
+#magic_speaker_panel strong {
+    color: #17251d !important;
+}
+
+#magic_speaker_panel .speaker-notes,
+#magic_speaker_panel .speaker-notes ol,
+#magic_speaker_panel .speaker-notes li {
+    color: #31413a !important;
+    background: #ffffff !important;
+}
+
+#magic_speaker_panel .speaker-notes {
+    box-sizing: border-box;
+    padding: 14px 24px 18px !important;
+}
+
+.park-toolbar,
+.park-controls,
+.park-status,
+.park-tabs,
+.park-results,
+.park-history {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+}
+
+@media (max-width: 1200px) {
+    .guide-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .recipe-card { grid-template-columns: 110px 1fr 1fr; }
+    .recipe-card p { grid-column: auto; }
+}
+
+@media (max-width: 950px) {
+    .dashboard-body .dashboard-header { padding-left: 16px !important; padding-right: 16px !important; }
+    .dashboard-body .dashboard-row { padding-left: 6px; padding-right: 6px; }
+    .guide-shell { padding: 8px !important; }
+    .guide-section-heading { flex-direction: column; }
+    .guide-steps,
+    .recipe-card,
+    .theme-message-grid,
+    .guide-checklist ul { grid-template-columns: 1fr; }
+    .recipe-card p { grid-column: auto; }
+}

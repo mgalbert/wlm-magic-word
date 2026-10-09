@@ -1,0 +1,62 @@
+<form version="1.1" script="wlm_live_test_v0208.js" stylesheet="wlm_magic_word.css,wlm_live_test.css,wlm_compat_v0203.css">
+  <label>Live WLM Test</label>
+  <description>Run an intentional lab search and show the Magic Word overlay when Splunk reports a WLM admission rejection.</description>
+  <fieldset submitButton="false" autoRun="false">
+    <input type="text" token="live_spl">
+      <label>SPL to dispatch</label>
+      <default>| makeresults | eval message="Scoped test search admitted"</default>
+      <initialValue>| makeresults | eval message="Scoped test search admitted"</initialValue>
+    </input>
+    <input type="time" token="live_time">
+      <label>Time range</label>
+      <default>
+        <earliest>-15m</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <html>
+        <div class="live-guidance">
+          <strong>Lab guardrail:</strong> start with the harmless default search. To validate the popup, use a dedicated test user and a temporary admission rule that rejects a clearly identifiable test search. Do not create a deliberately expensive search.
+          <button type="button" id="run-live-search" class="run-button">Run / Rerun Search</button>
+          <button type="button" id="auto-sound-toggle" class="preview-button" aria-pressed="true">App sound: on</button>
+        </div>
+      </html>
+      <table id="live_results">
+        <search id="real_wlm_search">
+          <query>$live_spl$</query>
+          <earliest>$live_time.earliest$</earliest>
+          <latest>$live_time.latest$</latest>
+        </search>
+        <option name="count">20</option>
+        <option name="drilldown">none</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
+        <div id="wlm-live-overlay" class="wlm-overlay" role="dialog" aria-modal="true" aria-labelledby="live-overlay-title" aria-hidden="true">
+          <div class="wlm-overlay-card">
+            <button type="button" id="close-overlay" class="overlay-close" aria-label="Close">×</button>
+            <div id="live-dino" class="live-dino" aria-hidden="true">🦖⌨</div>
+            <div id="live-denied" class="live-denied">SEARCH DENIED</div>
+            <h1 id="live-overlay-title">AH-AH-AH!</h1>
+            <p id="live-tagline" class="live-magic-word">You didn't say the magic word.</p>
+            <p id="live-wlm-message" class="live-server-message">Splunk reported a WLM admission rejection.</p>
+            <div class="remediation-card"><span>TRY THIS</span><strong id="live-remediation">Refine the search and try again.</strong></div>
+            <button type="button" id="live-sound-button" class="sound-button">▶ Play the warning</button>
+            <p class="fine-print">Triggered from the real search manager response on this page.</p>
+          </div>
+        </div>
+        <div id="wlm-admitted-toast" class="admitted-toast" role="status" aria-live="polite">
+          <span class="admitted-title">✓ CLEVER SEARCH</span>
+          <span class="admitted-copy">Admitted by workload policy</span>
+          <span id="live-admitted-metrics" class="admitted-metrics">0 results · 0.00s</span>
+        </div>
+      </html>
+    </panel>
+  </row>
+</form>

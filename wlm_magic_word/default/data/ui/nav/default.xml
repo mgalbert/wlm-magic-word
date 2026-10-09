@@ -1,0 +1,6 @@
+<nav search_view="search" color="#65A637">
+  <view name="readme" />
+  <view name="wlm_magic_word" default="true" />
+  <view name="park_search" />
+  <view name="wlm_live_test" />
+</nav>

@@ -1,0 +1,105 @@
+<form version="1.1" script="park_search_v0208.js" stylesheet="wlm_live_test.css,park_search_v0206.css,wlm_compat_v0203.css">
+  <label>Park Search</label>
+  <description>A native-feeling Splunk search workspace with WLM-aware feedback and diagnostics.</description>
+  <search id="park_search_manager">
+    <query>| makeresults | where false()</query>
+    <earliest>-15m</earliest>
+    <latest>now</latest>
+  </search>
+  <row>
+    <panel>
+      <html>
+        <div class="park-workspace">
+          <div class="park-toolbar">
+            <div>
+              <span class="park-product">PARK SEARCH</span>
+              <span class="park-version">v1.0.0</span>
+            </div>
+            <div class="park-toolbar-actions">
+              <button type="button" id="park-quiet" class="park-secondary" aria-pressed="false">Professional mode: off</button>
+              <button type="button" id="park-sound-toggle" class="park-secondary" aria-pressed="true">App sound: on</button>
+              <button type="button" id="park-diagnostics-toggle" class="park-secondary" aria-expanded="false">Diagnostics</button>
+            </div>
+          </div>
+
+          <label class="park-label" for="park-spl-editor">Search Processing Language</label>
+          <textarea id="park-spl-editor" class="park-editor" rows="7" spellcheck="false">| makeresults | eval message="Scoped Park Search admitted"</textarea>
+
+          <div class="park-controls">
+            <label for="park-time-range">Time range</label>
+            <select id="park-time-range" class="park-time-range">
+              <option value="-15m">Last 15 minutes</option>
+              <option value="-60m">Last 60 minutes</option>
+              <option value="-4h">Last 4 hours</option>
+              <option value="-24h">Last 24 hours</option>
+              <option value="-7d">Last 7 days</option>
+              <option value="0">All time</option>
+            </select>
+            <button type="button" id="park-run" class="run-button">Run Search</button>
+            <button type="button" id="park-stop" class="park-stop" disabled="disabled">Stop</button>
+            <button type="button" id="park-restore" class="park-secondary" disabled="disabled">Restore search</button>
+            <button type="button" id="park-open-native" class="park-secondary">Open in Search &amp; Reporting</button>
+          </div>
+
+          <div id="park-status" class="park-status state-idle" role="status" aria-live="polite">
+            <strong id="park-status-label">READY</strong>
+            <span>SID: <b id="park-sid">—</b></span>
+            <span>Runtime: <b id="park-runtime">0.00s</b></span>
+            <span>Events: <b id="park-event-count">0</b></span>
+            <span>Results: <b id="park-result-count">0</b></span>
+          </div>
+
+          <div id="park-inline-warning" class="park-inline-warning" role="alert"></div>
+
+          <div class="park-body">
+            <section class="park-results-section">
+              <div class="park-tabs" role="tablist">
+                <button type="button" id="park-tab-events" class="active" role="tab" aria-selected="true">Events</button>
+                <button type="button" id="park-tab-statistics" role="tab" aria-selected="false">Statistics</button>
+                <button type="button" id="park-tab-messages" role="tab" aria-selected="false">Messages <span id="park-message-count">0</span></button>
+              </div>
+              <div id="park-results" class="park-results"><p class="park-empty">Run a search to explore the park.</p></div>
+            </section>
+
+            <aside class="park-history">
+              <div class="park-aside-title">SESSION HISTORY</div>
+              <div id="park-history-list"><p class="park-empty">No searches yet.</p></div>
+              <button type="button" id="park-clear-history" class="park-history-clear">Clear history</button>
+            </aside>
+          </div>
+
+          <div id="park-diagnostics" class="park-diagnostics" hidden="hidden">
+            <div class="park-diagnostics-heading"><strong>Search diagnostics</strong><small>Current browser-session lifecycle details</small></div>
+            <div><span>Version</span><b>1.0.0</b></div>
+            <div><span>Dispatch</span><b id="diag-dispatch">0</b></div>
+            <div><span>Phase</span><b id="diag-phase">idle</b></div>
+            <div><span>HTTP</span><b id="diag-http">—</b></div>
+            <div><span>Trigger</span><b id="diag-trigger">—</b></div>
+            <div><span>Marker</span><b id="diag-marker">—</b></div>
+            <div><span>Last update</span><b id="diag-updated">—</b></div>
+          </div>
+        </div>
+
+        <div id="park-wlm-overlay" class="wlm-overlay" role="dialog" aria-modal="true" aria-labelledby="park-overlay-title" aria-hidden="true">
+          <div class="wlm-overlay-card">
+            <button type="button" id="park-close-overlay" class="overlay-close" aria-label="Close">×</button>
+            <div id="park-dino" class="live-dino" aria-hidden="true">🦖⌨</div>
+            <div class="live-denied">SEARCH DENIED</div>
+            <h1 id="park-overlay-title">AH-AH-AH!</h1>
+            <p id="park-tagline" class="live-magic-word">You didn't say the magic word.</p>
+            <p id="park-wlm-message" class="live-server-message">Splunk reported a WLM admission rejection.</p>
+            <div class="remediation-card"><span>TRY THIS</span><strong id="park-remediation">Refine the search and try again.</strong></div>
+            <button type="button" id="park-sound" class="sound-button">▶ Play the warning</button>
+            <p class="fine-print">Triggered by the Park Search dispatch. The original SPL remains available.</p>
+          </div>
+        </div>
+
+        <div id="park-admitted-toast" class="admitted-toast" role="status" aria-live="polite">
+          <span class="admitted-title">✓ CLEVER SEARCH</span>
+          <span class="admitted-copy">Admitted by workload policy</span>
+          <span id="park-admitted-metrics" class="admitted-metrics">0 results · 0.00s</span>
+        </div>
+      </html>
+    </panel>
+  </row>
+</form>
